@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <body>
+    <input type="file" name="上传文件" id="file_id" />
+    <button type="submit" name="btn" id="btnId" onclick="readFile()">
+      提交
+    </button>
+    <script>
+      function readFile() {
+        const objFile = document.getElementById("file_id");
+        if (objFile.value === "") {
+          alert("请选择文件！");
+          return;
+        }
+        // 获取文件
+        const files = objFile.files;
+        // 新建一个FileReader
+        const reader = new FileReader();
+        // 读取文件
+        reader.readAsText(files[0], "UTF-8");
+        // 读取完文件之后会回来这里
+        reader.onload = function (e) {
+          // 读取文件内容
+          const fileString = e.target.result;
+          // 接下来可对文件内容进行处理
+          console.log(fileString);
+        };
+      }
+    </script>
+  </body>
+</html>

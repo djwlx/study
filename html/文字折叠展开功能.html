@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+    <style>
+      p {
+        background-color: bisque;
+        width: 200px;
+        /* height: 30px; */
+        line-height: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        /* 多行元素省略 */
+        /* overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box; */
+        /* 行数 */
+        /* -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; */
+      }
+      span {
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      我是一段很长很长的文字啊啊 啊啊啊 啊，我是一段很长很长的文字啊啊 啊啊啊
+      啊，我是一段很长很长的文字啊啊 啊啊啊 啊
+    </p>
+    <span>展开</span>
+    <script>
+      let btn = document.getElementsByTagName("span")[0];
+      btn.onclick = function () {
+        let p = document.getElementsByTagName("p")[0];
+        let ws = getComputedStyle(p).whiteSpace;
+        if (ws === "normal") {
+          p.style.whiteSpace = "nowrap";
+          btn.innerText = "展开";
+        } else {
+          p.style.whiteSpace = "normal";
+          btn.innerText = "收起";
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      #div1 {
+        height: 50px;
+        padding-top: 100px;
+        background-color: red;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div1">
+      <!-- <img
+        src="https://picture.djwl.top/img/5bb2f89a38935.png"
+        alt=""
+        width="200px"
+      /> -->
+    </div>
+    <script>
+      // Axios
+      axios.get('http://47.93.233.220:8099/getcomments').then((res) => {
+        console.log(res.data[0]);
+      });
+      // fetch
+      fetch('http://47.93.233.220:8099/getcomments', {
+        method: 'GET',
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          console.log(res[0]);
+          document.getElementById('div1').innerText = JSON.stringify(res[0]);
+        });
+      // xhr对象
+      let xhr = new XMLHttpRequest();
+      xhr.open('get', 'http://47.93.233.220:8099/getcomments', true);
+      xhr.send();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          let res = xhr.responseText;
+          console.log(JSON.parse(res)[0]);
+        }
+      };
+    </script>
+  </body>
+</html>

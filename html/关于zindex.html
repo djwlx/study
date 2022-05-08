@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 200px;
+      height: 200px;
+    }
+    .green {
+      background-color: green;
+      z-index: 999;
+    }
+    .red {
+      background-color: red;
+      position: relative;
+      left: 30px;
+      top: 30px;
+      z-index: 0;
+    }
+    .yellow {
+      z-index: 10;
+      position: absolute;
+      background-color: yellow;
+    }
+    span {
+      background-color: aqua;
+      padding-top: 20px;
+      padding-bottom: 100px;
+    }
+  </style>
+  <body>
+    <div class="green">
+      <div class="red">
+        <span>hello</span>
+        <p>world</p>
+      </div>
+    </div>
+    <div class="yellow"></div>
+    <script></script>
+  </body>
+</html>

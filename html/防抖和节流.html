@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+    <style>
+      #app {
+        width: 100%;
+        height: 300px;
+        background-color: bisque;
+        text-align: center;
+        line-height: 300px;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <div id="app"></div>
+  <body>
+    <script>
+      var div = document.getElementById('app');
+      let i = 1;
+      div.addEventListener('mousemove', throttle(moving, 1000));
+      function moving() {
+        div.innerText = i++;
+      }
+      function debounce(fn, time) {
+        var timer = null;
+        return function () {
+          let that = this;
+          let arg = arguments;
+          if (timer !== null) {
+            clearTimeout(timer);
+          }
+          timer = setTimeout(() => {
+            fn.call(that, arg);
+          }, time);
+        };
+      }
+      function throttle(fn, time) {
+        let pre = 0;
+        return function () {
+          let that = this;
+          let arg = arguments;
+          let now = Date.now();
+          if (now - pre > time) {
+            fn.apply(fn, arg);
+            pre = now;
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

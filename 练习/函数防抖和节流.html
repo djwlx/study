@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <body>
+    <div
+      style="
+        width: 100%;
+        height: 300px;
+        background-color: aqua;
+        text-align: center;
+        line-height: 300px;
+        font-size: 50px;
+      "
+      id="kkk"
+    ></div>
+    <script>
+      var kkk = document.getElementById('kkk');
+      let num = 1;
+      kkk.addEventListener('mousemove', debounce(event, 1000));
+      function event() {
+        kkk.innerHTML = num++;
+      }
+      // 防抖
+      function debounce(fn, wait) {
+        let iswait = null;
+        return function () {
+          let that = this;
+          let arg = arguments;
+          if (iswait) {
+            clearTimeout(iswait);
+          }
+          let now = !iswait;
+          iswait = setTimeout(() => {
+            iswait = null;
+          }, wait);
+          if (now) {
+            fn.apply(that, arg);
+          }
+        };
+      }
+      // 节流
+      function throttle(fn, wait) {
+        let previous = 0;
+        return function () {
+          let that = this;
+          let arg = arguments;
+          let now = Date.now();
+          if (now - previous > wait) {
+            fn.apply(that, arg);
+            previous = now;
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

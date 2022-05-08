@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <body>
+    <script>
+      function getData() {
+        return new Promise(function (resolve, reject) {
+          fetch("http://192.168.1.180:8080/api/v1/book/list", {
+            method: "POST",
+            headers: {
+              token: "1_admin",
+            },
+            body: JSON.stringify({
+              bookstack_id: 1,
+              page: 0,
+              size: 100,
+            }),
+          })
+            .then((res) => {
+              // console.log(res);
+              return res.json();
+            })
+            .then((res) => {
+              resolve(res);
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        });
+      }
+      // console.log(getData());
+
+      async function test() {
+        let data = await getData();
+        console.log(data);
+      }
+
+      test();
+    </script>
+  </body>
+</html>

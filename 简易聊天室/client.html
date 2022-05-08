@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  </head>
+  <body>
+    <script>
+      var ws = new WebSocket("ws://localhost:8097");
+      ws.onopen = function () {
+        console.log("connected");
+        ws.send("你好啊");
+      };
+
+      ws.onmessage = function (e) {
+        console.log(e.data);
+      };
+    </script>
+  </body>
+</html>

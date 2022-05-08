@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      height: 60px;
+      background-color: aqua;
+    }
+    .content {
+      height: 500px;
+      background-color: yellow;
+      width: 100%;
+
+      /* display: flex; */
+    }
+    .left {
+      width: 200px;
+      height: 500px;
+      float: left;
+      background-color: springgreen;
+      margin-left: -100%;
+    }
+    .center {
+      height: 500px;
+      background-color: fuchsia;
+      float: left;
+      width: 100%;
+    }
+    .right {
+      width: 200px;
+      height: 500px;
+      background-color: tomato;
+      float: left;
+      margin-left: -200px;
+    }
+    .footer {
+      height: 60px;
+      background-color: blueviolet;
+    }
+    .main {
+      height: 100%;
+      margin: 0 200px;
+      background-color: teal;
+    }
+  </style>
+  <body>
+    <div class="content">
+      <div class="center"><div class="main">main</div></div>
+      <div class="left">left</div>
+      <div class="right">right</div>
+    </div>
+  </body>
+</html>

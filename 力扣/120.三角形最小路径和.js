@@ -1,0 +1,1 @@
+var minimumTotal = function (triangle) {};

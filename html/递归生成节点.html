@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <body>
+    <script>
+      let node = {
+        tag: 'div',
+        children: [
+          {
+            tag: 'label',
+            children: [
+              {
+                tag: 'div',
+              },
+            ],
+          },
+          {
+            tag: 'button',
+          },
+        ],
+      };
+      const getnode = (nodes) => {
+        let tag = document.createElement(nodes.tag);
+        if (nodes.children) {
+          nodes.children.map((item) => {
+            tag.appendChild(getnode(item));
+          });
+        }
+        return tag;
+      };
+      console.log(getnode(node));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        {
+          children: [
+            {
+              children: [
+                {
+                  children: null,
+                  parentId: 4,
+                  name: '模块a1-2',
+                  key: 17,
+                  id: 17,
+                  isChecked: 1,
+                },
+                {
+                  children: [
+                    {
+                      children: null,
+                      parentId: 5,
+                      name: '模块a1-1-2',
+                      key: 16,
+                      id: 16,
+                      isChecked: 1,
+                    },
+                    {
+                      children: null,
+                      parentId: 5,
+                      name: '模块a1-1-1',
+                      key: 15,
+                      id: 15,
+                      isChecked: 0,
+                    },
+                  ],
+                  parentId: 4,
+                  name: '模块a1-1',
+                  key: 5,
+                  id: 5,
+                  isChecked: 0,
+                },
+              ],
+              parentId: 1,
+              name: '模块a',
+              key: 4,
+              id: 4,
+              isChecked: 0,
+            },
+          ],
+          parentId: 0,
+          name: '页面a',
+          key: 1,
+          id: 1,
+          isChecked: 0,
+        },
+        {
+          children: [
+            {
+              children: [
+                {
+                  children: null,
+                  parentId: 6,
+                  name: '模块2-1',
+                  key: 8,
+                  id: 8,
+                  isChecked: 0,
+                },
+              ],
+              parentId: 2,
+              name: '模块2',
+              key: 6,
+              id: 6,
+              isChecked: 0,
+            },
+          ],
+          parentId: 0,
+          name: '页面b',
+          key: 2,
+          id: 2,
+          isChecked: 0,
+        },
+      ];
+
+      function filterTree(data) {
+        var newTree = data.filter((x) => {
+          if (x.children === null && x.isChecked === 0) {
+            return false;
+          } else {
+            return true;
+          }
+        });
+        newTree.forEach(
+          (x) => x.children && (x.children = filterTree(x.children))
+        );
+        return newTree;
+      }
+      console.log(arr);
+      let operate = JSON.parse(JSON.stringify(arr));
+      console.log(filterTree(operate));
+    </script>
+  </body>
+</html>

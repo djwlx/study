@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+    <style>
+      @keyframes myani {
+        from {
+          left: 0;
+          width: 60px;
+          height: 60px;
+          transform: rotate(0deg);
+        }
+        to {
+          left: 400px;
+          width: 120px;
+          height: 120px;
+          transform: rotate(180deg);
+        }
+      }
+      #app {
+        transition: 1s;
+        background-color: brown;
+        position: absolute;
+        animation-name: myani;
+        animation-timing-function: linear;
+        animation-duration: 4s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

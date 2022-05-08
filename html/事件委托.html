@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>标题</title>
+    <style>
+      ul {
+        height: 600px;
+      }
+      li {
+        height: 100px;
+        margin: 1px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="li"></li>
+      <li class="li"></li>
+      <li class="li"></li>
+      <li class="li"></li>
+      <li class="li"></li>
+    </ul>
+  </body>
+  <script>
+    console.log(document);
+    let a = document.getElementsByTagName("ul")[0];
+    // console.log(a.children);
+    a.addEventListener("click", function (e) {
+      let arr = a.children;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === e.target) {
+          console.log(i);
+        }
+      }
+      // arr.forEach((element, i) => {
+      //   if (e.target == element) console.log(i);
+      // });
+    });
+  </script>
+</html>
